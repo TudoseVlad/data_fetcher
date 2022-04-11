@@ -1,0 +1,8 @@
+
+src/data_fetch/__pycache__/data_fetcher.cpython-310.pyc
+src/__pycache__/ia_bilet_data.cpython-310.pyc
+src/data/event_types.json
+src/data/events.json
+src/data/test.json
+src/data_fetch/__pycache__/ia_bilet_data.cpython-310.pyc
+src/fb/__pycache__/firebase_con.cpython-310.pyc
