@@ -8,7 +8,7 @@ import copy
 
 from data_fetch.ia_bilet_data import ia_bilet_data
 PATH = "src\drivers\chromedriver.exe"
-SITES_PATH = "D:\Event_App\src\data\sites.txt"
+SITES_PATH = "src\data\sites.txt"
 JSON_EVENTS = "src\data\events.json"
 JSON_EVENT_TYPES = "src\data\event_types.json"
 
@@ -38,7 +38,10 @@ def data_fetcher():
 
 
     no_of_e_t = len(all_event_types["event_types"])
-    id = all_event_types["event_types"][no_of_e_t-1]["id"] + 1
+    if no_of_e_t > 0:
+        id = all_event_types["event_types"][no_of_e_t-1]["id"] + 1
+    else:
+        id = 1
     print(id)
     for value in new_event_types:
         new_val = True

@@ -31,7 +31,7 @@ def get_event_description(driver,id):
 
 
 def update_event(all_events,event,i):
-    all_events["events"][i]["data"]["description"]= event["description"]
+    all_events["events"][i]["data"]["description"]= event["data"]["description"]
     all_events["events"][i]["data"]["event_location"] = event["data"]["event_location"]
     return all_events
 
@@ -84,7 +84,7 @@ def page_scraper(driver,all_events,event_types):
 
         #extracting  event description WIP
 
-        event["description"] = get_event_description(driver,id)
+        event["data"]["description"] = get_event_description(driver,id)
 
         #adding event Types
         event["event_types"] = event_types
