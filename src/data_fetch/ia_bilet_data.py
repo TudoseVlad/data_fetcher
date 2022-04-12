@@ -25,7 +25,7 @@ def get_event_description(driver,id):
 
 
 def update_event(all_events,event,i):
-    all_events["events"][i]["data"]["description"]= event["data"]["description"]
+    all_events["events"][i]["data"]["description"] = event["data"]["description"]
     all_events["events"][i]["data"]["event_location"] = event["data"]["event_location"]
     return all_events
 
@@ -33,7 +33,7 @@ def page_scraper(driver,all_events,event_types):
     search = driver.find_element(by =By.ID,value ="eventListPaginatedId")
     events = search.find_elements(by = By.CLASS_NAME , value ="row")  
     add_to_list = True
-    #more_data = driver.find_element_by_id("btn-more-container text-center")
+    
     for t  in events:
         
         #extracting the id of the event

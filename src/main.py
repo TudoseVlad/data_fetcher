@@ -12,4 +12,5 @@ def main():
     duration = time.time() - duration
     print("executia a durat " + str(int(duration)) + " secunde")
 
-main()
+if __name__ == "__main__":
+    main()
