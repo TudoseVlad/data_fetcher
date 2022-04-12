@@ -9,9 +9,9 @@ import copy
 from turtle import update
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-MAIN_LINK ="https://www.iabilet.ro"
-TEST_FILE = "verificare.txt"
-PATH = "src\drivers\chromedriver2.exe"
+
+from data_imports import DRIVER_2, MAIN_LINK_IABILET
+
 
 def data_dumping(data):
    f = open(TEST_FILE,'a')
@@ -20,7 +20,7 @@ def data_dumping(data):
    
 
 def get_event_description(driver,id):
-    new_driver =  webdriver.Chrome(PATH)
+    new_driver =  webdriver.Chrome(DRIVER_2)
     next_link = driver.find_element(by = By.XPATH, value = ".//a[contains(@href,'" +str(id) + "')]").get_attribute("href")
     new_driver.get(next_link)
     t = new_driver.find_element(by=By.CLASS_NAME, value = "main-content")
@@ -109,7 +109,7 @@ def page_scraper(driver,all_events,event_types):
         n = search.find_element(by= By.CLASS_NAME, value = "btn-more-container")
         next_page = n.find_element(by= By.CLASS_NAME, value = "btn")
         next_page_link = next_page.get_dom_attribute("href")
-        next_page_link = MAIN_LINK + next_page_link
+        next_page_link = MAIN_LINK_IABILET + next_page_link
         driver.get(next_page_link)
         #data_dumping({"sunt la pagina" : inc})
         #data_dumping(all_events)
@@ -140,10 +140,10 @@ def ia_bilet_data(driver,all_events):
         link_and_e_t["event_type"] = ["Concert ",(x.get_attribute('innerHTML'))]
 
         next_page_link = x.get_dom_attribute("href")
-        if MAIN_LINK in next_page_link:
+        if MAIN_LINK_IABILET in next_page_link:
             link_and_e_t["link"] = next_page_link
         else: 
-            next_page_link =MAIN_LINK + next_page_link
+            next_page_link =MAIN_LINK_IABILET + next_page_link
             link_and_e_t["link"] = next_page_link
         #print(link_and_e_t)
         all_links .append(copy.copy(link_and_e_t))
@@ -158,7 +158,7 @@ def ia_bilet_data(driver,all_events):
             event_types = []
             #new_driver = copy.copy(driver)
             next_page_link = x.get_dom_attribute("href")
-            next_page_link =MAIN_LINK + next_page_link
+            next_page_link =MAIN_LINK_IABILET + next_page_link
             #print(next_page_link)
             link_and_e_t["link"] = next_page_link
             link_and_e_t["event_type"]= [(x.text)]

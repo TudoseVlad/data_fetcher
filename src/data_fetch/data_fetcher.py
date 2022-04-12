@@ -7,10 +7,7 @@ from selenium import webdriver
 import copy
 
 from data_fetch.ia_bilet_data import ia_bilet_data
-PATH = "src\drivers\chromedriver.exe"
-SITES_PATH = "src\data\sites.txt"
-JSON_EVENTS = "src\data\events.json"
-JSON_EVENT_TYPES = "src\data\event_types.json"
+from data_imports import DRIVER_1, JSON_EVENT_TYPES, JSON_EVENTS, SITES_PATH
 
 
 
@@ -22,7 +19,7 @@ def data_fetcher():
     with open(SITES_PATH) as f:
         sites = f.readlines()
     print(sites[0])
-    driver = webdriver.Chrome(PATH)
+    driver = webdriver.Chrome(DRIVER_1)
     if( os.stat(JSON_EVENTS).st_size != 0):
         with open(JSON_EVENTS,encoding="utf-16") as outfile:
             all_events = json.load(outfile,)
