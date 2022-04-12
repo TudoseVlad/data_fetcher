@@ -13,12 +13,6 @@ from selenium.webdriver.common.by import By
 from data_imports import DRIVER_2, MAIN_LINK_IABILET
 
 
-def data_dumping(data):
-   f = open(TEST_FILE,'a')
-   f.write(data)
-   f.close()
-   
-
 def get_event_description(driver,id):
     new_driver =  webdriver.Chrome(DRIVER_2)
     next_link = driver.find_element(by = By.XPATH, value = ".//a[contains(@href,'" +str(id) + "')]").get_attribute("href")
@@ -179,15 +173,3 @@ def ia_bilet_data(driver,all_events):
     return event_types, all_events
 
     
-#/html/body/header/div[3]/div/div/ul[1]/li[3]/div/ul/li[1]/a
-#/html/body/header/div[3]/div/div/ul[1]/li[4]/div/a
-#/html/body/header/div[3]/div/div/ul[1]/li[9]/div/a
-#/html/body/header/div[3]/div/div/ul[1]/li[3]/div/ul/li[1]/a
-#/html/body/header/div[3]/div/div/ul[1]/li[3]/div/ul/li[1]/a#
-
-
-#//*[@id="eventListPaginatedId"]/div[1]/div[1]/div[1]/a
-#//*[@id="eventListPaginatedId"]/div[1]/div[2]/div[1]/a
-#//*[@id="eventListPaginatedId"]/div/div[1]/div[1]/a
-#//*[@id="eventListPaginatedId"]/div/div[1]/div[1]/a
-#//*[@id="eventListPaginatedId"]/div[1]/div[1]/div[1]/a
